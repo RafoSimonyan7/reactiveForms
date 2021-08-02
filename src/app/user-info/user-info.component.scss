@@ -1,0 +1,47 @@
+.main {
+    display: flex;
+}
+
+form {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 10px #888888;
+    margin: 15px;
+    label {
+        display: block;
+        margin: .5em 0;
+        font-weight: bold;
+        padding: 5px;
+    }
+    input {
+        width: 90%;
+        padding: 7px;
+        font-size: 20px;
+    }
+    .btn {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 10px;
+        button {
+            cursor: pointer;
+        }
+        .remove-btn {
+            color: red;
+        }
+    }
+}
+
+.form-error {
+    color: red;
+}
+
+
+  

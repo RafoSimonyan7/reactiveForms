@@ -1,0 +1,79 @@
+<div [formGroup]="userInfo" class="main">
+    <form>
+        <!-- firstName -->
+        <label for="first-name">First Name: </label>
+        <input type="text" formControlName="firstName">
+        <div *ngIf='userInfo.controls["firstName"].errors && userInfo.controls["firstName"].touched'>
+            <div *ngIf="userInfo.controls['firstName'].errors.required" class="form-error">
+                Please enter a first name
+            </div>
+            <div *ngIf="userInfo.controls['firstName'].errors.minlength" class="form-error">
+                Min length for name is 3
+            </div>
+        </div>
+        <!-- lastname -->
+        <label for="last-name">Last Name: </label>
+        <input type="text" formControlName='lastName'>
+        <div *ngIf="userInfo.controls['lastName'].errors && userInfo.controls['lastName'].touched" >
+            <div *ngIf=" userInfo.controls['lastName'].errors.required " class="form-error">
+                Please enter a last name
+            </div>
+            <div *ngIf=" userInfo.controls['lastName'].errors.minlength" class="form-error">
+                Length must be greater than 6
+            </div>
+            <div *ngIf=" userInfo.controls['lastName'].errors.maxLength" class="form-error">
+                Length must be less than 20
+            </div>
+        </div>
+
+        <!-- email -->
+        <label for="email">Email: </label>
+        <input type="text" formControlName='email'>
+        <div *ngIf=" userInfo.controls['email'].errors && userInfo.controls['email'].touched">
+            <div *ngIf=" userInfo.controls['email'].errors.required" class="form-error">
+                Please enter an email
+            </div>
+            <div *ngIf=" userInfo.controls['email'].errors.email" class="form-error">
+                Email is invalid
+            </div>
+        </div>
+
+        <!-- phone -->
+        <label for="phone">Phone: </label>
+        <input type="text" formControlName='phone'>
+        <div *ngIf=" userInfo.controls['phone'].errors && userInfo.controls['phone'].touched">
+            <div *ngIf=" userInfo.controls['phone'].errors.pattern" class="form-error">
+                Enter valid phone number
+            </div>
+            <div *ngIf=" userInfo.controls['phone'].errors.required" class="form-error">
+                Enter phone number
+            </div>
+        </div>
+
+        <!-- passwords -->
+        <label for='password'>password: </label>
+        <input type="password" formControlName='password'>
+        <div *ngIf=" userInfo.get('password').errors.strong && userInfo.get('password').touched" class="form-error">
+            Must have at least one number, one lowercase and one uppercase letter.
+        </div>
+
+        <label for="confirmPassword">Confirm password: </label>
+        <input type="password" formControlName='confirmPassword'>
+        <div *ngIf=" userInfo.controls['confirmPassword'].errors && userInfo.controls['confirmPassword'].touched">
+            <div *ngIf=" userInfo.controls['confirmPassword'].errors.required" class="form-error">
+                Confirm Password is required
+            </div>
+            <div *ngIf=" userInfo.get('confirmPassword').errors.mustMatch" class="form-error">
+                Passwords must match
+            </div>
+        </div>
+
+        
+        <br>
+
+        <div class="btn">
+            <button (click)='addUser()'>Add</button>
+            <button (click)='deleteUserForm()' *ngIf="id !== 0" class="remove-btn">Remove</button>
+        </div>
+    </form>
+</div>
